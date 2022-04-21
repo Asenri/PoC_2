@@ -14,12 +14,12 @@ async function getNewsTicker(keyword, start_date, end_date){
   const supply = await supply_promise;
 
   if (start_date == null){
-    start_date = new Date((Date.now()));
-    //start_date = new Date("2022-03-22");
+    //start_date = new Date((Date.now()));
+    start_date = new Date("2022-03-22");
   }
   if (end_date == null){
-    end_date = new Date(Date.now());
-    //end_date = new Date("2022-04-21");
+    //end_date = new Date(Date.get());
+    end_date = new Date("2022-04-21");
   }
   
 
@@ -32,12 +32,13 @@ async function getNewsTicker(keyword, start_date, end_date){
   console.log(demand_json);
 
   const line_json = supply_json.concat(demand_json);
-  console.log(typeof line_json);
 
   //sources = await source_query(keyword)
   //console.log(sources);
 
-  return JSON.stringify(line_json);
+  //source_json = JSON.stringify(source_query());
+
+  return JSON.stringify("LINE: " + line_json);
 }
 
 async function demand_query(keyword, start_date, to_date){
@@ -98,7 +99,7 @@ async function supply_query(keyword, start_date, to_date){
 }
 
 //console.log(histogram(testCase));
-
+/*
 async function source_query(keyword) {
   sources_promise = newsapi.v2.sources({
     category: keyword,
@@ -115,7 +116,7 @@ async function source_query(keyword) {
     result[source.sources.id]++;
     return result;
   }, {});
-}
+}*/
 
 function histogram(data) {
   return data.reduce((result, entry, index) => {
@@ -128,3 +129,37 @@ function histogram(data) {
     return result;
   }, {});
 }
+
+
+
+/*
+async function source_query(Source_id){
+  const sourceMap = array.map(publisher=>publisher.id)
+
+  sources_promise = newsapi.v2.sources({
+    category: keyword,
+    language: 'en',
+    country: 'us'
+  });
+
+  source_string = await sources_promise;
+
+  const arrayMap = source.map(s=>s.id)
+
+  listOfAllIds.from(new Set(arrayMap))
+
+
+  let mostPopular = {arrayName: null, howMany: null}
+  let leastPopular = {arrayName: null, howMany: null}
+
+  listOfAllIds.forEach((id, index) => {
+    const times = myArray.filter(x => x == id).length;
+    if (times > mostPopular.howMany) {
+      mostPopular = {arrayName: id, howMany: times}
+    }
+
+    if (times < leastPopular.howMany) {
+      mostPopular = {arrayName: id, howMany: times}
+    }
+  })
+}*/
