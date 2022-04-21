@@ -38,7 +38,7 @@ async function getNewsTicker(keyword, start_date, end_date){
 
   //source_json = JSON.stringify(source_query());
 
-  return JSON.stringify("LINE: " + line_json);
+  return JSON.stringify("Line: " + line_json);
 }
 
 async function demand_query(keyword, start_date, to_date){
